@@ -33,7 +33,7 @@ static u_char ngx_http_error_build_tail[] =
 
 
 static u_char ngx_http_error_tail[] =
-"<hr><center>nginx</center>" CRLF
+"<hr><center>snib</center>" CRLF
 "</body>" CRLF
 "</html>" CRLF
 ;
@@ -81,6 +81,14 @@ static char ngx_http_error_303_page[] =
 ;
 
 
+static char ngx_http_error_304_page[] =
+"<html>" CRLF
+"<head><title>304 Not Modified</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>304 Not Modified</h1></center>" CRLF
+;
+
+
 static char ngx_http_error_307_page[] =
 "<html>" CRLF
 "<head><title>307 Temporary Redirect</title></head>" CRLF
@@ -107,9 +115,9 @@ static char ngx_http_error_400_page[] =
 
 static char ngx_http_error_401_page[] =
 "<html>" CRLF
-"<head><title>401 Authorization Required</title></head>" CRLF
+"<head><title>401 Unauthorized</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>401 Authorization Required</h1></center>" CRLF
+"<center><h1>401 Unauthorized</h1></center>" CRLF
 ;
 
 
@@ -139,9 +147,9 @@ static char ngx_http_error_404_page[] =
 
 static char ngx_http_error_405_page[] =
 "<html>" CRLF
-"<head><title>405 Not Allowed</title></head>" CRLF
+"<head><title>405 Method Not Allowed</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>405 Not Allowed</h1></center>" CRLF
+"<center><h1>405 Method Not Allowed</h1></center>" CRLF
 ;
 
 
@@ -163,9 +171,9 @@ static char ngx_http_error_407_page[] =
 
 static char ngx_http_error_408_page[] =
 "<html>" CRLF
-"<head><title>408 Request Time-out</title></head>" CRLF
+"<head><title>408 Request Timeout</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>408 Request Time-out</h1></center>" CRLF
+"<center><h1>408 Request Timeout</h1></center>" CRLF
 ;
 
 
@@ -203,17 +211,17 @@ static char ngx_http_error_412_page[] =
 
 static char ngx_http_error_413_page[] =
 "<html>" CRLF
-"<head><title>413 Request Entity Too Large</title></head>" CRLF
+"<head><title>413 Content Too Large</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>413 Request Entity Too Large</h1></center>" CRLF
+"<center><h1>413 Content Too Large</h1></center>" CRLF
 ;
 
 
 static char ngx_http_error_414_page[] =
 "<html>" CRLF
-"<head><title>414 Request-URI Too Large</title></head>" CRLF
+"<head><title>414 URI Too Long</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>414 Request-URI Too Large</h1></center>" CRLF
+"<center><h1>414 URI Too Long</h1></center>" CRLF
 ;
 
 
@@ -227,9 +235,25 @@ static char ngx_http_error_415_page[] =
 
 static char ngx_http_error_416_page[] =
 "<html>" CRLF
-"<head><title>416 Requested Range Not Satisfiable</title></head>" CRLF
+"<head><title>416 Range Not Satisfiable</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>416 Requested Range Not Satisfiable</h1></center>" CRLF
+"<center><h1>416 Range Not Satisfiable</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_417_page[] =
+"<html>" CRLF
+"<head><title>417 Expectation Failed</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>417 Expectation Failed</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_418_page[] =
+"<html>" CRLF
+"<head><title>418 I'm a teapot</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>418 I'm a teapot</h1></center>" CRLF
 ;
 
 
@@ -241,11 +265,75 @@ static char ngx_http_error_421_page[] =
 ;
 
 
+static char ngx_http_error_422_page[] =
+"<html>" CRLF
+"<head><title>422 Unprocessable Content</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>422 Unprocessable Content</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_423_page[] =
+"<html>" CRLF
+"<head><title>423 Locked</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>423 Locked</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_424_page[] =
+"<html>" CRLF
+"<head><title>424 Failed Dependency</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>424 Failed Dependency</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_425_page[] =
+"<html>" CRLF
+"<head><title>425 Too Early</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>425 Too Early</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_426_page[] =
+"<html>" CRLF
+"<head><title>426 Upgrade Required</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>426 Upgrade Required</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_428_page[] =
+"<html>" CRLF
+"<head><title>428 Precondition Required</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>428 Precondition Required</h1></center>" CRLF
+;
+
+
 static char ngx_http_error_429_page[] =
 "<html>" CRLF
 "<head><title>429 Too Many Requests</title></head>" CRLF
 "<body>" CRLF
 "<center><h1>429 Too Many Requests</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_431_page[] =
+"<html>" CRLF
+"<head><title>431 Request Header Fields Too Large</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>431 Request Header Fields Too Large</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_451_page[] =
+"<html>" CRLF
+"<head><title>451 Unavailable For Legal Reasons</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>451 Unavailable For Legal Reasons</h1></center>" CRLF
 ;
 
 
@@ -315,17 +403,17 @@ static char ngx_http_error_502_page[] =
 
 static char ngx_http_error_503_page[] =
 "<html>" CRLF
-"<head><title>503 Service Temporarily Unavailable</title></head>" CRLF
+"<head><title>503 Service Unavailable</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>503 Service Temporarily Unavailable</h1></center>" CRLF
+"<center><h1>503 Service Unavailable</h1></center>" CRLF
 ;
 
 
 static char ngx_http_error_504_page[] =
 "<html>" CRLF
-"<head><title>504 Gateway Time-out</title></head>" CRLF
+"<head><title>504 Gateway Timeout</title></head>" CRLF
 "<body>" CRLF
-"<center><h1>504 Gateway Time-out</h1></center>" CRLF
+"<center><h1>504 Gateway Timeout</h1></center>" CRLF
 ;
 
 
@@ -337,11 +425,43 @@ static char ngx_http_error_505_page[] =
 ;
 
 
+static char ngx_http_error_506_page[] =
+"<html>" CRLF
+"<head><title>506 Variant Also Negotiates</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>506 Variant Also Negotiates</h1></center>" CRLF
+;
+
+
 static char ngx_http_error_507_page[] =
 "<html>" CRLF
 "<head><title>507 Insufficient Storage</title></head>" CRLF
 "<body>" CRLF
 "<center><h1>507 Insufficient Storage</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_508_page[] =
+"<html>" CRLF
+"<head><title>508 Loop Detected</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>508 Loop Detected</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_510_page[] =
+"<html>" CRLF
+"<head><title>510 Not Extended</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>510 Not Extended</h1></center>" CRLF
+;
+
+
+static char ngx_http_error_511_page[] =
+"<html>" CRLF
+"<head><title>511 Network Authentication Required</title></head>" CRLF
+"<body>" CRLF
+"<center><h1>511 Network Authentication Required</h1></center>" CRLF
 ;
 
 
@@ -356,7 +476,7 @@ static ngx_str_t ngx_http_error_pages[] = {
     ngx_string(ngx_http_error_301_page),
     ngx_string(ngx_http_error_302_page),
     ngx_string(ngx_http_error_303_page),
-    ngx_null_string,                     /* 304 */
+    ngx_string(ngx_http_error_304_page),
     ngx_null_string,                     /* 305 */
     ngx_null_string,                     /* 306 */
     ngx_string(ngx_http_error_307_page),
@@ -382,21 +502,43 @@ static ngx_str_t ngx_http_error_pages[] = {
     ngx_string(ngx_http_error_414_page),
     ngx_string(ngx_http_error_415_page),
     ngx_string(ngx_http_error_416_page),
-    ngx_null_string,                     /* 417 */
-    ngx_null_string,                     /* 418 */
+    ngx_string(ngx_http_error_417_page),
+    ngx_string(ngx_http_error_418_page),
     ngx_null_string,                     /* 419 */
     ngx_null_string,                     /* 420 */
     ngx_string(ngx_http_error_421_page),
-    ngx_null_string,                     /* 422 */
-    ngx_null_string,                     /* 423 */
-    ngx_null_string,                     /* 424 */
-    ngx_null_string,                     /* 425 */
-    ngx_null_string,                     /* 426 */
+    ngx_string(ngx_http_error_422_page),
+    ngx_string(ngx_http_error_423_page),
+    ngx_string(ngx_http_error_424_page),
+    ngx_string(ngx_http_error_425_page),
+    ngx_string(ngx_http_error_426_page),
     ngx_null_string,                     /* 427 */
-    ngx_null_string,                     /* 428 */
+    ngx_string(ngx_http_error_428_page),
     ngx_string(ngx_http_error_429_page),
+    ngx_null_string,                     /* 430 */
+    ngx_string(ngx_http_error_431_page),
+    ngx_null_string,                     /* 432 */
+    ngx_null_string,                     /* 433 */
+    ngx_null_string,                     /* 434 */
+    ngx_null_string,                     /* 435 */
+    ngx_null_string,                     /* 436 */
+    ngx_null_string,                     /* 437 */
+    ngx_null_string,                     /* 438 */
+    ngx_null_string,                     /* 439 */
+    ngx_null_string,                     /* 440 */
+    ngx_null_string,                     /* 441 */
+    ngx_null_string,                     /* 442 */
+    ngx_null_string,                     /* 443 */
+    ngx_null_string,                     /* 444 */
+    ngx_null_string,                     /* 445 */
+    ngx_null_string,                     /* 446 */
+    ngx_null_string,                     /* 447 */
+    ngx_null_string,                     /* 448 */
+    ngx_null_string,                     /* 449 */
+    ngx_null_string,                     /* 450 */
+    ngx_string(ngx_http_error_451_page),
 
-#define NGX_HTTP_LAST_4XX  430
+#define NGX_HTTP_LAST_4XX  452
 #define NGX_HTTP_OFF_5XX   (NGX_HTTP_LAST_4XX - 400 + NGX_HTTP_OFF_4XX)
 
     ngx_string(ngx_http_error_494_page), /* 494, request header too large */
@@ -412,10 +554,14 @@ static ngx_str_t ngx_http_error_pages[] = {
     ngx_string(ngx_http_error_503_page),
     ngx_string(ngx_http_error_504_page),
     ngx_string(ngx_http_error_505_page),
-    ngx_null_string,                     /* 506 */
-    ngx_string(ngx_http_error_507_page)
+    ngx_string(ngx_http_error_506_page),
+    ngx_string(ngx_http_error_507_page),
+    ngx_string(ngx_http_error_508_page),
+    ngx_null_string,                     /* 509 */
+    ngx_string(ngx_http_error_510_page),
+    ngx_string(ngx_http_error_511_page)
 
-#define NGX_HTTP_LAST_5XX  508
+#define NGX_HTTP_LAST_5XX  512
 
 };
 
@@ -438,11 +584,16 @@ ngx_http_special_response_handler(ngx_http_request_t *r, ngx_int_t error)
             case NGX_HTTP_BAD_REQUEST:
             case NGX_HTTP_REQUEST_ENTITY_TOO_LARGE:
             case NGX_HTTP_REQUEST_URI_TOO_LARGE:
+            case NGX_HTTP_EXPECTATION_FAILED:
+            case NGX_HTTP_UPGRADE_REQUIRED:
+            case NGX_HTTP_HEADER_FIELDS_TOO_LARGE:
             case NGX_HTTP_TO_HTTPS:
             case NGX_HTTPS_CERT_ERROR:
             case NGX_HTTPS_NO_CERT:
+            case NGX_HTTP_REQUEST_HEADER_TOO_LARGE:
             case NGX_HTTP_INTERNAL_SERVER_ERROR:
             case NGX_HTTP_NOT_IMPLEMENTED:
+            case NGX_HTTP_VERSION_NOT_SUPPORTED:
                 r->keepalive = 0;
         }
     }

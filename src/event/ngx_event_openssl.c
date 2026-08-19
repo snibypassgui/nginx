@@ -171,7 +171,7 @@ ngx_ssl_init(ngx_log_t *log)
     }
 
 #ifndef OPENSSL_NO_STDIO
-    if (OPENSSL_INIT_set_config_appname(init, "nginx") == 0) {
+    if (OPENSSL_INIT_set_config_appname(init, "snib") == 0) {
         ngx_ssl_error(NGX_LOG_ALERT, log, 0,
                       "OPENSSL_INIT_set_config_appname() failed");
         return NGX_ERROR;
@@ -202,7 +202,7 @@ ngx_ssl_init(ngx_log_t *log)
 
 #endif
 
-    OPENSSL_config("nginx");
+    OPENSSL_config("snib");
 
     SSL_library_init();
     SSL_load_error_strings();
@@ -4820,7 +4820,7 @@ ngx_ssl_session_ticket_keys(ngx_conf_t *cf, ngx_ssl_t *ssl, ngx_array_t *paths)
         == 0)
     {
         ngx_log_error(NGX_LOG_WARN, cf->log, 0,
-                      "nginx was built with Session Tickets support, however, "
+                      "snib was built with Session Tickets support, however, "
                       "now it is linked dynamically to an OpenSSL library "
                       "which has no tlsext support, therefore Session Tickets "
                       "are not available");
