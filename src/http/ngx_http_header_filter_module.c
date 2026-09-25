@@ -47,7 +47,7 @@ ngx_module_t  ngx_http_header_filter_module = {
 };
 
 
-static u_char ngx_http_server_string[] = "Server: nginx" CRLF;
+static u_char ngx_http_server_string[] = "Server: snib" CRLF;
 static u_char ngx_http_server_full_string[] = "Server: " NGINX_VER CRLF;
 static u_char ngx_http_server_build_string[] = "Server: " NGINX_VER_BUILD CRLF;
 
@@ -89,49 +89,73 @@ static ngx_str_t ngx_http_status_lines[] = {
     ngx_string("402 Payment Required"),
     ngx_string("403 Forbidden"),
     ngx_string("404 Not Found"),
-    ngx_string("405 Not Allowed"),
+    ngx_string("405 Method Not Allowed"),
     ngx_string("406 Not Acceptable"),
     ngx_string("407 Proxy Authentication Required"),
-    ngx_string("408 Request Time-out"),
+    ngx_string("408 Request Timeout"),
     ngx_string("409 Conflict"),
     ngx_string("410 Gone"),
     ngx_string("411 Length Required"),
     ngx_string("412 Precondition Failed"),
-    ngx_string("413 Request Entity Too Large"),
-    ngx_string("414 Request-URI Too Large"),
+    ngx_string("413 Content Too Large"),
+    ngx_string("414 URI Too Long"),
     ngx_string("415 Unsupported Media Type"),
-    ngx_string("416 Requested Range Not Satisfiable"),
-    ngx_null_string,  /* "417 Expectation Failed" */
-    ngx_null_string,  /* "418 unused" */
+    ngx_string("416 Range Not Satisfiable"),
+    ngx_string("417 Expectation Failed"),
+    ngx_string("418 I'm a teapot"),
     ngx_null_string,  /* "419 unused" */
     ngx_null_string,  /* "420 unused" */
     ngx_string("421 Misdirected Request"),
-    ngx_null_string,  /* "422 Unprocessable Entity" */
-    ngx_null_string,  /* "423 Locked" */
-    ngx_null_string,  /* "424 Failed Dependency" */
-    ngx_null_string,  /* "425 unused" */
-    ngx_null_string,  /* "426 Upgrade Required" */
+    ngx_string("422 Unprocessable Content"),
+    ngx_string("423 Locked"),
+    ngx_string("424 Failed Dependency"),
+    ngx_string("425 Too Early"),
+    ngx_string("426 Upgrade Required"),
     ngx_null_string,  /* "427 unused" */
-    ngx_null_string,  /* "428 Precondition Required" */
+    ngx_string("428 Precondition Required"),
     ngx_string("429 Too Many Requests"),
+    ngx_null_string,  /* "430 unused" */
+    ngx_string("431 Request Header Fields Too Large"),
+    ngx_null_string,  /* "432 unused" */
+    ngx_null_string,  /* "433 unused" */
+    ngx_null_string,  /* "434 unused" */
+    ngx_null_string,  /* "435 unused" */
+    ngx_null_string,  /* "436 unused" */
+    ngx_null_string,  /* "437 unused" */
+    ngx_null_string,  /* "438 unused" */
+    ngx_null_string,  /* "439 unused" */
+    ngx_null_string,  /* "440 unused" */
+    ngx_null_string,  /* "441 unused" */
+    ngx_null_string,  /* "442 unused" */
+    ngx_null_string,  /* "443 unused" */
+    ngx_null_string,  /* "444 unused" */
+    ngx_null_string,  /* "445 unused" */
+    ngx_null_string,  /* "446 unused" */
+    ngx_null_string,  /* "447 unused" */
+    ngx_null_string,  /* "448 unused" */
+    ngx_null_string,  /* "449 unused" */
+    ngx_null_string,  /* "450 unused" */
+    ngx_string("451 Unavailable For Legal Reasons"),
 
-#define NGX_HTTP_LAST_4XX  430
+#define NGX_HTTP_LAST_4XX  452
 #define NGX_HTTP_OFF_5XX   (NGX_HTTP_LAST_4XX - 400 + NGX_HTTP_OFF_4XX)
 
     ngx_string("500 Internal Server Error"),
     ngx_string("501 Not Implemented"),
     ngx_string("502 Bad Gateway"),
-    ngx_string("503 Service Temporarily Unavailable"),
-    ngx_string("504 Gateway Time-out"),
+    ngx_string("503 Service Unavailable"),
+    ngx_string("504 Gateway Timeout"),
     ngx_string("505 HTTP Version Not Supported"),
-    ngx_null_string,        /* "506 Variant Also Negotiates" */
+    ngx_string("506 Variant Also Negotiates"),
     ngx_string("507 Insufficient Storage"),
+    ngx_string("508 Loop Detected"),
+    ngx_null_string,  /* "509 unused" */
+    ngx_string("510 Not Extended"),
+    ngx_string("511 Network Authentication Required"),
 
-    /* ngx_null_string, */  /* "508 unused" */
-    /* ngx_null_string, */  /* "509 unused" */
-    /* ngx_null_string, */  /* "510 Not Extended" */
+    /* ngx_null_string, */  /* "512 unused" */
 
-#define NGX_HTTP_LAST_5XX  508
+#define NGX_HTTP_LAST_5XX  512
 
 };
 
