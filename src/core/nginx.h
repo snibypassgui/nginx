@@ -10,7 +10,7 @@
 
 
 #define nginx_version      1031006
-#define NGINX_VERSION      "5.2.0"
+#define NGINX_VERSION      "5.2.1"
 #define NGINX_VER          "snib/" NGINX_VERSION
 
 #ifdef NGX_BUILD
