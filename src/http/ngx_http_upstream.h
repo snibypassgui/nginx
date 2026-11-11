@@ -26,8 +26,9 @@
 #define NGX_HTTP_UPSTREAM_FT_HTTP_504        0x00000080
 #define NGX_HTTP_UPSTREAM_FT_HTTP_403        0x00000100
 #define NGX_HTTP_UPSTREAM_FT_HTTP_404        0x00000200
-#define NGX_HTTP_UPSTREAM_FT_HTTP_429        0x00000400
-#define NGX_HTTP_UPSTREAM_FT_UPDATING        0x00000800
+#define NGX_HTTP_UPSTREAM_FT_HTTP_421        0x00000400
+#define NGX_HTTP_UPSTREAM_FT_HTTP_429        0x00000800
+#define NGX_HTTP_UPSTREAM_FT_UPDATING        0x00001000
 #define NGX_HTTP_UPSTREAM_FT_BUSY_LOCK       0x00001000
 #define NGX_HTTP_UPSTREAM_FT_MAX_WAITING     0x00002000
 #define NGX_HTTP_UPSTREAM_FT_NON_IDEMPOTENT  0x00004000
@@ -40,6 +41,7 @@
                                              |NGX_HTTP_UPSTREAM_FT_HTTP_504  \
                                              |NGX_HTTP_UPSTREAM_FT_HTTP_403  \
                                              |NGX_HTTP_UPSTREAM_FT_HTTP_404  \
+                                             |NGX_HTTP_UPSTREAM_FT_HTTP_421  \
                                              |NGX_HTTP_UPSTREAM_FT_HTTP_429)
 
 #define NGX_HTTP_UPSTREAM_INVALID_HEADER     40

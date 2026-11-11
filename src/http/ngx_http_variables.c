@@ -361,7 +361,7 @@ static ngx_http_variable_t  ngx_http_core_variables[] = {
     { ngx_string("connection_time"), NULL, ngx_http_variable_connection_time,
       0, NGX_HTTP_VAR_NOCACHEABLE, 0 },
 
-    { ngx_string("nginx_version"), NULL, ngx_http_variable_nginx_version,
+    { ngx_string("snib_version"), NULL, ngx_http_variable_nginx_version,
       0, 0, 0 },
 
     { ngx_string("hostname"), NULL, ngx_http_variable_hostname,

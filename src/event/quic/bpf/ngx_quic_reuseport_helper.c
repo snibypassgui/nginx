@@ -131,12 +131,12 @@ int ngx_quic_select_socket_by_dcid(struct sk_reuseport_md *ctx)
     rc = bpf_sk_select_reuseport(ctx, &ngx_quic_sockmap, &key, 0);
 
     if (rc == 0) {
-        debugmsg("nginx quic worker socket selected by dcid");
+        debugmsg("snib quic worker socket selected by dcid");
         return SK_PASS;
     }
 
     if (rc != -ENOENT) {
-        debugmsg("nginx quic bpf_sk_select_reuseport() failed: %d", rc);
+        debugmsg("snib quic bpf_sk_select_reuseport() failed: %d", rc);
         return SK_DROP;
     }
 
@@ -145,21 +145,21 @@ new:
     wc_key = 0;
     wc0 = bpf_map_lookup_elem(&ngx_quic_worker_counts, &wc_key);
     if (wc0 == NULL) {
-        debugmsg("nginx quic worker count 0 undefined");
+        debugmsg("snib quic worker count 0 undefined");
         return SK_DROP;
     }
 
     wc_key = 1;
     wc1 = bpf_map_lookup_elem(&ngx_quic_worker_counts, &wc_key);
     if (wc1 == NULL) {
-        debugmsg("nginx quic worker count 1 undefined");
+        debugmsg("snib quic worker count 1 undefined");
         return SK_DROP;
     }
 
     n = *wc0 > *wc1 ? *wc0 : *wc1;
 
     if (n == 0) {
-        debugmsg("nginx quic no active workers");
+        debugmsg("snib quic no active workers");
         return SK_DROP;
     }
 
@@ -169,13 +169,13 @@ new:
     rc = bpf_sk_select_reuseport(ctx, &ngx_quic_sockmap, &key, 0);
 
     if (rc == 0) {
-        debugmsg("nginx quic listener socket selected worker index:%d",
+        debugmsg("snib quic listener socket selected worker index:%d",
                  worker_idx);
         return SK_PASS;
     }
 
     if (rc != -ENOENT) {
-        debugmsg("nginx quic bpf_sk_select_reuseport() failed: %d", rc);
+        debugmsg("snib quic bpf_sk_select_reuseport() failed: %d", rc);
         return SK_DROP;
     }
 
@@ -188,12 +188,12 @@ new:
         rc = bpf_sk_select_reuseport(ctx, &ngx_quic_sockmap, &key, 0);
 
         if (rc == 0) {
-            debugmsg("nginx quic listener socket selected "
+            debugmsg("snib quic listener socket selected "
                      "worker index:%d (fallback)", worker_idx);
             return SK_PASS;
         }
 
-        debugmsg("nginx quic bpf_sk_select_reuseport() fallback "
+        debugmsg("snib quic bpf_sk_select_reuseport() fallback "
                  "failed: %d", rc);
     }
 
@@ -201,7 +201,7 @@ new:
 
 failed:
 
-    debugmsg("nginx quic bad datagram");
+    debugmsg("snib quic bad datagram");
 
     return SK_DROP;
 }

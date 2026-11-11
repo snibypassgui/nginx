@@ -111,7 +111,7 @@ static ngx_stream_variable_t  ngx_stream_core_variables[] = {
     { ngx_string("connection"), NULL,
       ngx_stream_variable_connection, 0, 0, 0 },
 
-    { ngx_string("nginx_version"), NULL, ngx_stream_variable_nginx_version,
+    { ngx_string("snib_version"), NULL, ngx_stream_variable_nginx_version,
       0, 0, 0 },
 
     { ngx_string("hostname"), NULL, ngx_stream_variable_hostname,
